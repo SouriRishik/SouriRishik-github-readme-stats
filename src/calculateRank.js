@@ -52,7 +52,7 @@ function calculateRank({
     ISSUES_WEIGHT = 1;
   const REVIEWS_MEDIAN = 2,
     REVIEWS_WEIGHT = 1;
-  const STARS_MEDIAN = 50,
+  const STARS_MEDIAN = 10,
     STARS_WEIGHT = 2;
   const FOLLOWERS_MEDIAN = 10,
     FOLLOWERS_WEIGHT = 1;
