@@ -82,9 +82,14 @@ function calculateRank({
 
   const percentile = rank * 100;
 
-  const visualProgress = 100 - percentile;
+  const index = THRESHOLDS.findIndex((t) => percentile <= t);
+  const lowerBound = index === 0 ? 0 : THRESHOLDS[index - 1];
+  const upperBound = THRESHOLDS[index];
   
-  return { level, percentile: visualProgress };
+  const tierProgress =
+    ((upperBound - percentile) / (upperBound - lowerBound)) * 100;
+  
+  return { level, percentile: tierProgress };
 }
 
 export { calculateRank };
