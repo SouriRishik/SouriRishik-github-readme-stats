@@ -80,7 +80,11 @@ function calculateRank({
 
   const level = LEVELS[THRESHOLDS.findIndex((t) => rank * 100 <= t)];
 
-  return { level, percentile: rank * 100 };
+  const percentile = rank * 100;
+
+  const visualProgress = 100 - percentile;
+  
+  return { level, percentile: visualProgress };
 }
 
 export { calculateRank };
