@@ -80,7 +80,16 @@ function calculateRank({
 
   const level = LEVELS[THRESHOLDS.findIndex((t) => rank * 100 <= t)];
 
-  return { level, percentile: rank * 100 };
+  const percentile = rank * 100;
+
+  const index = THRESHOLDS.findIndex((t) => percentile <= t);
+  const lowerBound = index === 0 ? 0 : THRESHOLDS[index - 1];
+  const upperBound = THRESHOLDS[index];
+  
+  const normalizedProgress =
+    ((percentile - lowerBound) / (upperBound - lowerBound)) * 100;
+  
+  return { level, percentile: normalizedProgress };
 }
 
 export { calculateRank };
